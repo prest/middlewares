@@ -27,4 +27,3 @@ before_script:
 
 script:
     - sh test.sh
-
