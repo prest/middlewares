@@ -40,7 +40,7 @@ func AccessControl() negroni.Handler {
 			return
 		}
 
-		if config.Adapter.TablePermissions(mapPath["table"], permission) {
+		if config.PrestConf.Adapter.TablePermissions(mapPath["table"], permission) {
 			next(rw, rq)
 			return
 		}
