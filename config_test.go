@@ -171,6 +171,7 @@ func TestDebug(t *testing.T) {
 
 func TestEnableDefaultJWT(t *testing.T) {
 	os.Setenv("PREST_JWT_DEFAULT", "false")
+	os.Setenv("PREST_DEBUG", "false")
 	config.Load()
 	nd := appTest()
 	serverd := httptest.NewServer(nd)
