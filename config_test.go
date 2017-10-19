@@ -170,6 +170,7 @@ func TestDebug(t *testing.T) {
 }
 
 func TestEnableDefaultJWT(t *testing.T) {
+	app = nil
 	os.Setenv("PREST_JWT_DEFAULT", "false")
 	os.Setenv("PREST_DEBUG", "false")
 	config.Load()
