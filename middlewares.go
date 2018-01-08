@@ -25,6 +25,13 @@ func HandlerSet() negroni.Handler {
 	})
 }
 
+// TransactionControl is a middleware to handle transactions in pREST
+func TransactionControl() negroni.Handler {
+	return negroni.HandlerFunc(func(rw http.ResponseWriter, rq *http.Request, next http.HandlerFunc) {
+		next(rw, rq)
+	})
+}
+
 // AccessControl is a middleware to handle permissions on tables in pREST
 func AccessControl() negroni.Handler {
 	return negroni.HandlerFunc(func(rw http.ResponseWriter, rq *http.Request, next http.HandlerFunc) {

@@ -15,6 +15,7 @@ var (
 	BaseStack = []negroni.Handler{
 		negroni.Handler(negroni.NewRecovery()),
 		negroni.Handler(negroni.NewLogger()),
+		TransactionControl(),
 		HandlerSet(),
 	}
 )
