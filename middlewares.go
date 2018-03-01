@@ -2,15 +2,14 @@ package middlewares
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"net/http/httptest"
 	"strconv"
-
 	"strings"
 
 	"github.com/auth0/go-jwt-middleware"
 	"github.com/dgrijalva/jwt-go"
+	"github.com/nuveo/log"
 	"github.com/prest/config"
 	"github.com/urfave/negroni"
 )
