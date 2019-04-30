@@ -190,6 +190,7 @@ func TestEnableDefaultJWT(t *testing.T) {
 }
 
 func TestJWTIsRequired(t *testing.T) {
+	MiddlewareStack = []negroni.Handler{}
 	app = nil
 	os.Setenv("PREST_JWT_DEFAULT", "true")
 	os.Setenv("PREST_DEBUG", "false")
