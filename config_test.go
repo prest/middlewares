@@ -293,6 +293,7 @@ func appTestWithJwt() *negroni.Negroni {
 }
 
 func TestCors(t *testing.T) {
+	MiddlewareStack = []negroni.Handler{}
 	os.Setenv("PREST_DEBUG", "true")
 	os.Setenv("PREST_CORS_ALLOWORIGIN", "*")
 	os.Setenv("PREST_CONF", "../testdata/prest.toml")
