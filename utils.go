@@ -52,6 +52,9 @@ func renderFormat(w http.ResponseWriter, recorder *httptest.ResponseRecorder, fo
 		m := make(map[string]string)
 		m["error"] = strings.TrimSpace(string(byt))
 		byt, _ = json.MarshalIndent(m, "", "\t")
+		if format == "csv" {
+			format = "json"
+		}
 	}
 	switch format {
 	case "xml":
@@ -64,6 +67,15 @@ func renderFormat(w http.ResponseWriter, recorder *httptest.ResponseRecorder, fo
 		w.Header().Set("Content-Type", "application/xml")
 		w.WriteHeader(recorder.Code)
 		w.Write([]byte(xmlStr))
+	case "csv":
+		result, err := csvFromJSON(byt)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(recorder.Code)
+		w.Write(result)
 	default:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(recorder.Code)
